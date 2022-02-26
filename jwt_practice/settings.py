@@ -18,7 +18,9 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework',
     "drf_yasg",
+
     'describe',
+    'auth_test',
 
 ]
 
@@ -111,17 +113,23 @@ SWAGGER_SETTINGS = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
+        'NAME': 'django.contrib.auth_test.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth_test.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth_test.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth_test.password_validation.NumericPasswordValidator',
+    },
+    {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    }
 ]
 
 LANGUAGE_CODE = 'en-us'

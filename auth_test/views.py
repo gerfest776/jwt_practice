@@ -4,10 +4,11 @@ from rest_framework.mixins import CreateModelMixin
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import permissions
 
-from auth.serializers import RegisterSerializer
+from auth_test.serializers import RegisterSerializer
 
 
-class RegisterView(CreateModelMixin, GenericViewSet):
+class RegisterView(CreateModelMixin,
+                   GenericViewSet):
     queryset = User.objects.all()
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = [permissions.AllowAny]
     serializer_class = RegisterSerializer
