@@ -10,9 +10,14 @@ class InsultSerializer(serializers.ModelSerializer):
         model = Journal
         fields = '__all__'
 
+
 class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(max_length=68, min_length=6)
+
     class Meta:
         model = User
-        fields = ('username', 'password1', 'password2')
-
-
+        exclude = ('groups',
+                   'user_permissions',
+                   'last_login',
+                   'date_joined'
+                   )
